@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var resolve = path.resolve
 
 module.exports = {
   entry: './src/main.js',
@@ -15,8 +16,9 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader'
-        ],
-      },      {
+        ]
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
@@ -45,12 +47,14 @@ module.exports = {
         options: {
           formatter: require('eslint-friendly-formatter')
         }
-      },
+      }
     ]
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      '@views': resolve('src/views'),
+      '@': resolve('src')
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
